@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       borderWidth: {
         1: "1px",
+      },
+      boxShadow: {
+        'fill': '0 0 0 black',
       }
     },
     colors: {
@@ -20,6 +23,7 @@ module.exports = {
       'dark-green': '#268124',
       'gray-blue': '#8492A8',
       'dark-yellow': '#9F9A1F',
+      'transparent': 'transparent'
     },
     fontFamily: {
       title: ['ClashDisplay'],
