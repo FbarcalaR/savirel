@@ -4,7 +4,7 @@ import Home from './pages/home/home.jsx';
 
 function App() {
   return (
-    <div class="p-5">
+    <div className="p-5">
       <Home />
     </div>
   );
