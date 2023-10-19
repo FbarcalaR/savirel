@@ -9,14 +9,14 @@ const MenuBar = () => {
     return (
         <div className='absolute h-fit bottom-0 left-0 right-0 transition-all'>
             <div className="h-1/6 flex justify-between mt-5 bg-light-black">
-                <div>
+                <div className='pl-5 flex gap-4'>
                     <button><Home /></button>
                     <button><Menu /></button>
                 </div>
                 <button className="bg-dark-yellow rounded-full leading-none w-10 h-10 -translate-y-5" onClick={()=>setIsAddMovementPanelActive(prev=>!prev)}>
                             <Add className='text-black'/>
                 </button>
-                <div>
+                <div className='pr-5 flex gap-4'>
                     <button><Filter /></button>
                 </div>
             </div>

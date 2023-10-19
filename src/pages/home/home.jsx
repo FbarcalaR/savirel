@@ -1,23 +1,16 @@
 import React, { useState } from 'react';
-import Movement from './components/movement/movement';
-import { getUserMovements } from './services/movementsApiService';
+import { getUserMovements } from './services/movements-api-service';
+import MovementsList from './components/movement-list/movements-list';
+import MenuBar from './components/menu-bar/menu-bar';
 
 const Home = () => {
     const [movements, setMomevents] = useState(getUserMovements());
 
     return (
-        <div className='flex flex-col m-auto gap-4 w-full max-w-xl'>
-            {
-                (movements.map((movement, index) =>
-                    <Movement
-                        key={index}
-                        amount={movement.amount}
-                        emoji={movement.emoji}
-                        date={movement.date}
-                        description={movement.description}
-                        tags={movement.tags} />
-                ))}
-        </div>
+        <>
+            <MovementsList movements={movements} />
+            <MenuBar />
+        </>
     );
 }
 
