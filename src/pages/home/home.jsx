@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
-import { getUserMovements } from './services/movements-api-service';
+import React, { useCallback, useState } from 'react';
+import { getUserMovements, postNewMovement } from './services/movements-api-service';
 import MovementsList from './components/movement-list/movements-list';
 import MenuBar from './components/menu-bar/menu-bar';
 
 const Home = () => {
-    const [movements, setMomevents] = useState(getUserMovements());
+    const [movements, setMovements] = useState(getUserMovements());
+
+    const createNewMovement = useCallback((movement) => {
+        postNewMovement(movement);
+        setMovements([...getUserMovements()]);
+    }, []);
 
     return (
         <>
             <MovementsList movements={movements} />
-            <MenuBar />
+            <MenuBar addMovement={movement => createNewMovement(movement)}/>
         </>
     );
 }
