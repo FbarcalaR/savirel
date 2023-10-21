@@ -587,6 +587,10 @@ video {
   right: 0px;
 }
 
+.left-1\/2 {
+  left: 50%;
+}
+
 .col-span-1 {
   grid-column: span 1 / span 1;
 }

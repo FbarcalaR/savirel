@@ -7,13 +7,13 @@ const MenuBar = ({addMovement}) => {
 
     return (
         <div className='absolute h-fit bottom-0 left-0 right-0 transition-all'>
-            <div className="h-1/6 flex justify-between mt-5 bg-light-black">
+            <div className="h-10 flex justify-between mt-5 bg-light-black min-h-4">
                 <div className='pl-5 flex gap-4'>
                     {!isAddMovementPanelActive && <button><Home /></button>}
                     {!isAddMovementPanelActive && <button><Menu /></button>}
                     {isAddMovementPanelActive && <button onClick={() => setIsAddMovementPanelActive(false)}><Close /></button>}
                 </div>
-                <button className="bg-dark-yellow rounded-full leading-none w-10 h-10 -translate-y-5"
+                <button className="bg-dark-yellow rounded-full leading-none w-10 h-10 -translate-y-5 absolute left-1/2"
                     onClick={() => {isAddMovementPanelActive && addMovement(newMovement); setIsAddMovementPanelActive(prev => !prev);}}
                 >
                     <Add className='text-black' />
@@ -35,9 +35,17 @@ const AddMovementContainer = ({ isActive, onTextUpdate }) => {
 
     const addMovement = useCallback((text) => {
         const amount = text.match(/^(-?)(\d+)/);
-        const description = text.match(/(?<= in )([\w ]+)$/);
+        const description = text.match(/(?<= at )([\w ]+)(?= on)/);
+        const date = text.match(/(?<= on )(\d\d\/\d\d\/\d\d\d\d)/);
         if (amount && description) {
-            onTextUpdate({id: 'test-32', amount: +amount[0], description: description[0], date: new Date(), emoji: '🐑', tags: []});
+            onTextUpdate({
+                id: 'test-32',
+                amount: +amount[0],
+                description: description[0],
+                date: date ? new Date(date[0]) : new Date(),
+                emoji: '🐑',
+                tags: []
+            });
         }
     }, [onTextUpdate]);
 
