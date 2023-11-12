@@ -38,14 +38,16 @@ const AddMovementContainer = ({ isActive, onTextUpdate }) => {
         const amount = text.match(/(-?)(\d+)/);
         const description = text.match(/(?<= at )([\w ]+)(?= on)/);
         const date = text.match(/(?<= on )(\d\d\/\d\d\/\d\d\d\d)/);
-        if (amount && description) {
+        const tags = text.match(/(?<=#)(\w*)/g);
+
+        if (amount && description && date) {
             onTextUpdate({
                 id: 'test-32',
                 amount: +amount[0],
                 description: description[0],
                 date: date ? new Date(date[0]) : new Date(),
-                emoji: emoji,
-                tags: []
+                emoji: emoji ? emoji[0] : '❓',
+                tags: tags ?? []
             });
         }
         else {
