@@ -3,7 +3,7 @@ import { Close, Add, Home, Menu, FilterList, HelpOutline } from '@material-ui/ic
 
 const MenuBar = ({addMovement}) => {
     const [isAddMovementPanelActive, setIsAddMovementPanelActive] = useState(false);
-    const [newMovement, setNewMovement] = useState({});
+    const [newMovement, setNewMovement] = useState(null);
 
     return (
         <div className='absolute h-fit bottom-0 left-0 right-0 transition-all'>
@@ -34,7 +34,8 @@ const AddMovementContainer = ({ isActive, onTextUpdate }) => {
     const textArea = useRef();
 
     const addMovement = useCallback((text) => {
-        const amount = text.match(/^(-?)(\d+)/);
+        const emoji = text.match(/\p{Extended_Pictographic}/gu);
+        const amount = text.match(/(-?)(\d+)/);
         const description = text.match(/(?<= at )([\w ]+)(?= on)/);
         const date = text.match(/(?<= on )(\d\d\/\d\d\/\d\d\d\d)/);
         if (amount && description) {
@@ -43,9 +44,12 @@ const AddMovementContainer = ({ isActive, onTextUpdate }) => {
                 amount: +amount[0],
                 description: description[0],
                 date: date ? new Date(date[0]) : new Date(),
-                emoji: '🐑',
+                emoji: emoji,
                 tags: []
             });
+        }
+        else {
+            onTextUpdate(null);
         }
     }, [onTextUpdate]);
 

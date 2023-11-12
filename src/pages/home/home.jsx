@@ -7,6 +7,9 @@ const Home = () => {
     const [movements, setMovements] = useState(getUserMovements());
 
     const createNewMovement = useCallback((movement) => {
+        if (!movement) {
+            return;
+        }
         postNewMovement(movement);
         setMovements([...getUserMovements()]);
     }, []);

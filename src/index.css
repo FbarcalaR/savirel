@@ -583,12 +583,12 @@ video {
   left: 0px;
 }
 
-.right-0 {
-  right: 0px;
-}
-
 .left-1\/2 {
   left: 50%;
+}
+
+.right-0 {
+  right: 0px;
 }
 
 .col-span-1 {
@@ -617,10 +617,6 @@ video {
 
 .h-0 {
   height: 0px;
-}
-
-.h-1\/6 {
-  height: 16.666667%;
 }
 
 .h-10 {
