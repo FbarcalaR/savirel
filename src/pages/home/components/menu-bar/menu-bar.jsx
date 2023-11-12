@@ -13,7 +13,7 @@ const MenuBar = ({addMovement}) => {
                     {!isAddMovementPanelActive && <button><Menu /></button>}
                     {isAddMovementPanelActive && <button onClick={() => setIsAddMovementPanelActive(false)}><Close /></button>}
                 </div>
-                <button className="bg-dark-yellow rounded-full leading-none w-10 h-10 -translate-y-5 absolute left-1/2"
+                <button className="bg-dark-yellow rounded-full leading-none w-10 h-10 -translate-y-5 absolute left-1/2 -translate-x-1/2"
                     onClick={() => {isAddMovementPanelActive && addMovement(newMovement); setIsAddMovementPanelActive(prev => !prev);}}
                 >
                     <Add className='text-black' />
