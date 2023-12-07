@@ -104,6 +104,7 @@ export const AddMovementContainer = ({ isActive, onTextUpdate }) => {
             <div className={`transition-all ${isActive ? 'h-20' : 'h-0'} w-full text-light-black duration-300 relative`}>
                 <textarea
                     ref={textArea}
+                    placeholder='🍕 20€ at parking pizza on 12/12/2023'
                     className='bg-white w-full h-full pl-2 pr-2 pt-1 pb-1 resize-none rounded-md transparent text-transparent'
                     onChange={(event) => addMovement(event.target.value)}
                 >
